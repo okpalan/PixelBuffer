@@ -105,14 +105,29 @@ PixelBuffer.prototype.drawPixel = function (x, y, r, g, b, a) {
     this.data[index + 3] = a;
 }
 
-PixelBuffer.prototype.getData = function () {
-    return this.data;
+
+//not neccasary,but useful.
+PixelBuffer.prototype.drawCircle = function (x, y, radius, r, g, b, a) {
+    var data = this.data;
+    var width = this.width;
+    var height = this.height;
+    var index;
+    var dx;
+    var dy;
+    var distance;
+    for (var i = 0; i < height; i++) {
+        for (var j = 0; j < width; j++) {
+            dx = j - x;
+            dy = i - y;
+            distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance <= radius) {
+                index = (i * width + j) * 4;
+                data[index] = r;
+                data[index + 1] = g;
+                data[index + 2] = b;
+                data[index + 3] = a;
+            }
+        }
+    }
 }
-// usage the pixel buffer
-// var pixelBuffer = new PixelBuffer(800, 600);
-// var imageData = context.createImageData(800, 600);
-// imageData.data.set(pixelBuffer.getData());
-// context.putImageData(imageData, 0, 0);
-
-
 

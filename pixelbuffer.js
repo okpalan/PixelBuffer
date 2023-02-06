@@ -139,3 +139,5 @@ PixelBuffer.prototype.getImageData = function () {
     imageData.data.set(this.data);
     return imageData;
 }
+
+// pixelBuffer.fill(0, 0, W, H, 0x000000);

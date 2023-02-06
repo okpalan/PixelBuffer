@@ -141,3 +141,23 @@ PixelBuffer.prototype.getImageData = function () {
 }
 
 // pixelBuffer.fill(0, 0, W, H, 0x000000);
+
+PixelBuffer.prototype.toRGBAString = function () {
+    var data = this.data;
+    var len = data.length;
+    var str = '';
+    for (var i = 0; i < len; i += 4) {
+        str += 'rgba(' + data[i] + ',' + data[i + 1] + ',' + data[i + 2] + ',' + data[i + 3] / 255 + ')';
+    }
+    return str;
+}
+
+PixelBuffer.prototype.toHSLString = function () {
+    var data = this.data;
+    var len = data.length;
+    var str = '';
+    for (var i = 0; i < len; i += 4) {
+        str += 'hsl(' + data[i] + ',' + data[i + 1] + ',' + data[i + 2] + ',' + data[i + 3] / 255 + ')';
+    }
+    return str;
+}

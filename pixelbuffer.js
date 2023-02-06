@@ -130,4 +130,12 @@ PixelBuffer.prototype.drawCircle = function (x, y, radius, r, g, b, a) {
         }
     }
 }
-
+PixelBuffer.prototype.getImageData = function () {
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');  
+    canvas.width = this.width;
+    canvas.height = this.height;
+    var imageData = context.createImageData(this.width, this.height);
+    imageData.data.set(this.data);
+    return imageData;
+}
